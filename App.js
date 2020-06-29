@@ -2,26 +2,20 @@ import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-//import Splash from "./screens/Splash";
 import Home from "./screens/Home";
-//import Profil from "./screens/Profil";
-//import Search from "./screens/Search";
-//import Details from "./screens/Details";
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-
-import { Provider } from react-redux;
-import {createStore} from "redux";
-import rootReducer from './helpers/routeReducer';
-
+import rootReducer from'./helpers/rootReducer';
+import {Provider} from 'react-redux';
+import { createStore } from 'redux';
+import Login from './screens/Login';
 const store = createStore(rootReducer);
-
 
 
 const BottomNavigator = createBottomTabNavigator(
 
 {
   Home:{
-    screen: Home,
+    screen: Login,
     navigationOptions:()=>({
         tabBarIcon:({tintColor})=>(
         <Icon
@@ -55,19 +49,19 @@ const BottomNavigator = createBottomTabNavigator(
       />
     )
   })
-}
+}*/
 },
   {
   tabBarOptions:{
     showLabel:false, 
     activeTintColor:'#7766C6'
-  }*/
+  }
 }
 );
 
 const AppNavigator = createStackNavigator(
     {
-        //Splash: {screen: Splash, navigationOptions: {headerShown: false}},
+        Splash: {screen: Splash, navigationOptions: {headerShown: false}},
         Home: {screen: BottomNavigator, navigationOptions: {headerShown: false}},
         //Details: {screen: Details, navigationOptions: {headerShown: false}},
         //Login: {screen: Login, navigationOptions: {headerShown: false}},
