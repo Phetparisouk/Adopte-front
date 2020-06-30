@@ -15,7 +15,7 @@ const BottomNavigator = createBottomTabNavigator(
 
 {
   Home:{
-    screen: Login,
+    screen: Home,
     navigationOptions:()=>({
         tabBarIcon:({tintColor})=>(
         <Icon
