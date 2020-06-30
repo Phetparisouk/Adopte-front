@@ -26,4 +26,4 @@ const rootReducer = (state = initState, action) => {
     }
 }
 
-export default rootReducer;
+export default routeReducer;
