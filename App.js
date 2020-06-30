@@ -16,7 +16,10 @@ const BottomNavigator = createBottomTabNavigator(
 
 {
   Home:{
+<<<<<<< HEAD
+=======
     //screen: Login,
+>>>>>>> 65c14323d2846325c8902dc61e8fb05391ed29bf
     screen: Home,
     navigationOptions:()=>({
         tabBarIcon:({tintColor})=>(
