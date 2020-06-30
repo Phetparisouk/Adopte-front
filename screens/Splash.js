@@ -27,7 +27,6 @@ class Splash extends Component{
         this.fadeInAnimation();
     }
 
-
     render() {
 
         let {fadeIn} = this.state;

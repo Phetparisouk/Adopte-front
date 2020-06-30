@@ -41,7 +41,6 @@ class Home extends Component{
         //let {navigation} = this.props;
 
         return (
-<<<<<<< HEAD
             <ScrollView style={styles.container}>
                 <Title title={"Liste perso test"}/>
 
@@ -71,9 +70,6 @@ class Home extends Component{
                     //renderItem = {({item}) => <EventBox data={item.fields} navigation={this.props.navigation}/>}
                 />
             </ScrollView>
-=======
-            <Title title={"Ce week-end"}/>
->>>>>>> 9536c18bf61f162ad699f9d9e890199bc70110c6
         )
     }
 
