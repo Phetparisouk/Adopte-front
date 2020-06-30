@@ -20,31 +20,31 @@ class Login extends Component{
         }
     }
 
-    connect() {
-        let {email, password} = this.state;
-        if(email !== null && password !== null) {
-            this.props.navigation.navigate('Home');
+    connect(){
+        let {email, password}=this.state;
+        if(email !== null && password !== null){
+          this.props.navigation.navigate('Home');
         }
-    }
+      }
 
-    handleChange(e) {
-        this.state({
-            [e.target.id]: e.target.value
-        });
-    }
-
+      handleChange(e, name){
+        this.setState({
+          [name]:e.nativeEvent.text
+        })
+      }
+/*
     handleChangeEmail(text) {
-        this.state({
+        this.setState({
             email: text
         });
     }
 
     handleChangePassword(text) {
-        this.state({
+        this.setState({
             password: text
         });
     }
-
+*/
     render(){
         return (
             <View style={styles.container}>
