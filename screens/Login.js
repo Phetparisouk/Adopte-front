@@ -1,72 +1,65 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 import {
     View,
     Text,
     StyleSheet,
-    Image,
-    ScrollView,
-    FlatList,
-    Button
+    TextInput,
+    Button,
+    TouchableOpacity
 } from 'react-native';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import tcomb from 'tcomb-form-native';
+
+//Initialisation
+const Form = tcomb.form.Form;
+
+//Model
+const LoginModel = tcomb.struct({
+    email: tcomb.String,
+    password: tcomb.String
+});
+
+//Options
+const options = {
+    fields: {
+        email: {
+            label: "Mon email",
+        }
+    }
+};
 
 class Login extends Component{
 
     constructor(props) {
         super(props);
+        this.containerRef = React.createRef();
         this.state = {
             email: null,
             password: null
         }
     }
 
+    handleChange(e, name){
+        this.setState({
+            [name]: e.nativeEvent.text
+        });
+    }
+
     connect(){
-        let {email, password}=this.state;
-        if(email !== null && password !== null){
-          this.props.navigation.navigate('Home');
-        }
-      }
-
-      handleChange(e, name){
-        this.setState({
-          [name]:e.nativeEvent.text
-        })
-      }
-/*
-    handleChangeEmail(text) {
-        this.setState({
-            email: text
-        });
+        let validate = this.refs.form.validate();
+        console.log(validate);
     }
 
-    handleChangePassword(text) {
-        this.setState({
-            password: text
-        });
-    }
-*/
     render(){
         return (
-            <View style={styles.container}>
+            <View ref={this.containerRef} style={styles.container}>
 
-                <TextInput 
-                    id={"email"}
-                    style={styles.input}
-                    placeholder={"Entrez votre email"}
-                    onChange={(e) => this.handleChange(e)}
-                />
+                <Form
+                    ref="form"
+                    type={LoginModel}
+                    options={options}
+                    value={this.state} />
+                <Button title={"Se connecter"} onPress={() => this.connect()}/>
 
-                <TextInput 
-                    style={styles.input}
-                    placeholder={"Entrez votre mdp"}
-                    secureTextEntry={true}
-                />
-          
-                {/*
-                <TouchableOpacity style={backgroundColor: "red", width:"100%", textAlign:}></TouchableOpacity>
-                */}
-
-                <Button title={"Se connecter"} onPress={() => this.connect()} />
             </View>
         )
     }
