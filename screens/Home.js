@@ -34,37 +34,39 @@ class Home extends Component{
 
     render() {
 
+        let {character} = this.state;
         //let {events} = this.state;
-        let {eventsWeek, eventsAfter} = this.state;
-        let {navigation} = this.props;
+        //let {eventsWeek, eventsAfter} = this.state;
+        //let {navigation} = this.props;
 
         return (
             <ScrollView style={styles.container}>
-                <Title title={"Ce week-end"}/>
+                <Title title={"Liste perso test"}/>
 
-                {/*
-                    events.map(item => {
+                {
+                    character.map(item => {
                         return (<EventBox/>)
                     })
-                */}
+                }
 
                 <FlatList
                     //data={events}
-                    data={eventsWeek}
+                    data={character}
+                    //data={eventsWeek}
                     horizontal= {true}
                     showsHorizontalScrollIndicator={false}
                     backgroundColor={"#FFF"}
-                    keyExtractor={item => item.id}
-                    renderItem = {({item}) => <EventBox navigation={this.props.navigation} data={item.fields} horizontal={true} />}
+                    //keyExtractor={item => item.id}
+                    //renderItem = {({item}) => <EventBox navigation={this.props.navigation} data={item.fields} horizontal={true} />}
                 />
 
 
                 <Title title={"A venir"}/>
                 <FlatList
-                    data={eventsAfter}
+                    //data={eventsAfter}
                     backgroundColor={"#FFF"}
-                    keyExtractor={item => item.id}
-                    renderItem = {({item}) => <EventBox data={item.fields} navigation={this.props.navigation}/>}
+                    //keyExtractor={item => item.id}
+                    //renderItem = {({item}) => <EventBox data={item.fields} navigation={this.props.navigation}/>}
                 />
             </ScrollView>
         )
