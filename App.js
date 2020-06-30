@@ -3,13 +3,13 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import rootReducer from'./helpers/rootReducer';
+import routeReducer from'./helpers/routeReducer';
 import {Provider} from 'react-redux';
 import { createStore } from 'redux';
 import Login from './screens/Login';
 import Splash from "./screens/Splash";
 import Home from "./screens/Home";
-const store = createStore(rootReducer);
+const store = createStore(routeReducer);
 
 
 const BottomNavigator = createBottomTabNavigator(
@@ -66,7 +66,7 @@ const AppNavigator = createStackNavigator(
         Splash: {screen: Splash, navigationOptions: {headerShown: false}},
         Home: {screen: BottomNavigator, navigationOptions: {headerShown: false}},
         //Details: {screen: Details, navigationOptions: {headerShown: false}},
-        //Login: {screen: Login, navigationOptions: {headerShown: false}},
+        Login: {screen: Login, navigationOptions: {headerShown: false}},
 
       },
     {
