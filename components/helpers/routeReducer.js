@@ -2,7 +2,7 @@ const initState = {
     favoris: [],
 };
 
-const routeReducer = (state = initState, action) => {
+const rootReducer = (state = initState, action) => {
 
     
     /* if(action.type === "UPDATE_FAVORIS"){
@@ -26,4 +26,4 @@ const routeReducer = (state = initState, action) => {
     }
 }
 
-export default routeReducer;
+export default rootReducer;

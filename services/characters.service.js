@@ -1,19 +1,19 @@
-const baseURL = "http://localhost:3004/"
-//import Helpers from '../helpers/Helpers'
+const baseURL = "https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-"
+import Helpers from '../helpers/Helpers'
 
 class CharactersService {
 
-    static async list() {
+    static async list( rows = 20) {
 
         let init = {
             method: "GET"
         };
 
-        let call = await fetch(`http://localhost:3004/characters`, init);
+        let call = await fetch(`${baseURL}&rows=${rows}`, init);
         let response = await call.json();
         return response.records;
     }
-/*
+
     static async getCharactersThisWeek ( rows = 20) {
         let init = {method : "GET"};
 
@@ -49,7 +49,7 @@ class CharactersService {
 
 
 
-*/
+
 
 }
 
