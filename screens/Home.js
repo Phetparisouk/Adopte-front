@@ -8,8 +8,8 @@ import {
     FlatList
 } from 'react-native';
 import Title from "../components/Title";
-import EventBox from "../components/EventBox";
-import EventsService from '../services/characters.service';
+//import EventBox from "../components/EventBox";
+import CharactersService from '../services/characters.service';
 
 class Home extends Component{
 
@@ -25,10 +25,11 @@ class Home extends Component{
 
     async componentDidMount() {       
         //let response = await EventsService.list();
-        let eventsWeek = await EventsService.getEventsThisWeek(10)
-        let eventsAfter = await EventsService.getEventsAfter()
+        //let eventsWeek = await EventsService.getEventsThisWeek(10)
+        //let eventsAfter = await EventsService.getEventsAfter()
         //this.setState( {events: response} );
-        this.setState( {eventsWeek, eventsAfter} );
+        //this.setState( {eventsWeek, eventsAfter} );
+        let characters = await CharactersService.list();
     }
 
 
@@ -40,6 +41,7 @@ class Home extends Component{
         //let {navigation} = this.props;
 
         return (
+<<<<<<< HEAD
             <ScrollView style={styles.container}>
                 <Title title={"Liste perso test"}/>
 
@@ -69,6 +71,9 @@ class Home extends Component{
                     //renderItem = {({item}) => <EventBox data={item.fields} navigation={this.props.navigation}/>}
                 />
             </ScrollView>
+=======
+            <Title title={"Ce week-end"}/>
+>>>>>>> 9536c18bf61f162ad699f9d9e890199bc70110c6
         )
     }
 
@@ -83,13 +88,3 @@ const styles = StyleSheet.create({
         paddingTop: 70
     }
 });
-
-/*
-<FlatList
-data={events}
-backgroundColor={"#FFF"}
-keyExtractor={item => item.id}
-renderItem = {({item}) => <EventBox data={item.fields}/>}
-/>
-
-*/

@@ -82,4 +82,10 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //paddingTop: 70
   },
+});
+    justifyContent: "center",
+    alignItems: 'center',
+    backgroundColor: '#FFF'
+  },
 });*/
+
