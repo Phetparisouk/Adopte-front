@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import UsersService from '../services/users.service';
 import {
     View,
     Text,
@@ -23,6 +24,9 @@ const options = {
     fields: {
         email: {
             label: "Mon email",
+        }, 
+        password: {
+            label: "Mot de passe",
         }
     }
 };
@@ -44,20 +48,25 @@ class Login extends Component{
         });
     }
 
-    connect(){
+    async connect(){
         let validate = this.refs.form.validate();
-        console.log(validate);
+        let email=validate.value.email;
+        let password=validate.value.password;
+        let user = await UsersService.auth({email,password});
+        if(user){
+            this.props.navigation.navigate('Home');
+        }
     }
 
     render(){
         return (
             <View ref={this.containerRef} style={styles.container}>
 
-                <Form
+                { <Form
                     ref="form"
                     type={LoginModel}
                     options={options}
-                    value={this.state} />
+                    value={this.state} /> }
                 <Button title={"Se connecter"} onPress={() => this.connect()}/>
 
             </View>
