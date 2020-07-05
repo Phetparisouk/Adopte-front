@@ -8,7 +8,8 @@ import {
     FlatList
 } from 'react-native';
 import Title from "../components/Title";
-//import EventBox from "../components/EventBox";
+
+import EventBox from "../components/EventBox";
 import CharactersService from '../services/characters.service';
 
 class Home extends Component{
