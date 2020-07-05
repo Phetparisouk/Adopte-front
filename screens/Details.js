@@ -5,18 +5,18 @@ import {
     StyleSheet,
 } from 'react-native';
 
-class Profil extends Component{
+class Details extends Component{
 
     render(){
         return (
             <View style={ styles.container }>
-                <Text>Profil</Text>
+                <Text>details</Text>
             </View>
         )
     }
 }
 
-export default Profil;
+export default Details;
 
 const styles = StyleSheet.create({
     container: {

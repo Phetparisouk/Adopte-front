@@ -8,72 +8,54 @@ import {
     FlatList
 } from 'react-native';
 import Title from "../components/Title";
+<<<<<<< HEAD
 
 import EventBox from "../components/EventBox";
+=======
+import CharacterBox from "../components/CharacterBox"
+>>>>>>> c25ac44250fef0277b343069ccf68453377101d9
 import CharactersService from '../services/characters.service';
 
 class Home extends Component{
 
     constructor(props) {
         super (props);
-
         this.state = {
-            //eventsWeek : [],
-            //eventsAfter: []
+            characters : [],
         }
     }
 
-
     async componentDidMount() {       
-        //let response = await EventsService.list();
-        //let eventsWeek = await EventsService.getEventsThisWeek(10)
-        //let eventsAfter = await EventsService.getEventsAfter()
-        //this.setState( {events: response} );
-        //this.setState( {eventsWeek, eventsAfter} );
         let characters = await CharactersService.list();
+        this.setState({characters});
     }
-
 
     render() {
 
-        let {character} = this.state;
-        //let {events} = this.state;
-        //let {eventsWeek, eventsAfter} = this.state;
-        //let {navigation} = this.props;
-
+        let {characters} = this.state;
+        let {navigation}=this.props;
+        
         return (
-            <ScrollView style={styles.container}>
-                <Title title={"Liste perso test"}/>
-
-                {
-                    character.map(item => {
-                        return (<EventBox/>)
-                    })
-                }
-
+            <ScrollView style={ styles.container }>
+                <Title title={"Ce week-end"}/>
                 <FlatList
-                    //data={events}
-                    data={character}
-                    //data={eventsWeek}
-                    horizontal= {true}
+                    data={characters}
+                    horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     backgroundColor={"#FFF"}
-                    //keyExtractor={item => item.id}
-                    //renderItem = {({item}) => <EventBox navigation={this.props.navigation} data={item.fields} horizontal={true} />}
-                />
-
-
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} />
+                    
                 <Title title={"A venir"}/>
                 <FlatList
-                    //data={eventsAfter}
+                    data={characters}
                     backgroundColor={"#FFF"}
-                    //keyExtractor={item => item.id}
-                    //renderItem = {({item}) => <EventBox data={item.fields} navigation={this.props.navigation}/>}
-                />
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} />
+
             </ScrollView>
         )
     }
-
 }
 
 export default Home;

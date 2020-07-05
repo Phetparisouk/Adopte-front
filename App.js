@@ -7,8 +7,10 @@ import routeReducer from'./helpers/routeReducer';
 import {Provider} from 'react-redux';
 import { createStore } from 'redux';
 import Login from './screens/Login';
+import Details from './screens/Details';
 import Splash from "./screens/Splash";
 import Home from "./screens/Home";
+import Profil from "./screens/Profil";
 const store = createStore(routeReducer);
 
 
@@ -38,7 +40,7 @@ const BottomNavigator = createBottomTabNavigator(
         />
       )
     })
-  }, 
+  }*/, 
   Profil:{
     screen:Profil, 
     navigationOptions:()=>({
@@ -50,7 +52,7 @@ const BottomNavigator = createBottomTabNavigator(
       />
     )
   })
-}*/
+}
 },
   {
   tabBarOptions:{
@@ -62,14 +64,15 @@ const BottomNavigator = createBottomTabNavigator(
 
 const AppNavigator = createStackNavigator(
     {
-        Splash: {screen: Splash, navigationOptions: {headerShown: false}},
-        Home: {screen: BottomNavigator, navigationOptions: {headerShown: false}},
-        //Details: {screen: Details, navigationOptions: {headerShown: false}},
-        Login: {screen: Login, navigationOptions: {headerShown: false}},
+        Splash: {screen: Splash,          navigationOptions: {headerShown: false}},
+        Home:   {screen: BottomNavigator, navigationOptions: {headerShown: false}},
+        Profil: {screen: Profil,          navigationOptions: {headerShown: false}},
+        Details:{screen: Details,         navigationOptions: {headerShown: false}},
+        Login:  {screen: Login,           navigationOptions: {headerShown: false}},
 
       },
     {
-        initialRouteName: 'Splash'
+        initialRouteName: 'Home'
     }
 );
 
