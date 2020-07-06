@@ -5,15 +5,11 @@ import {
     StyleSheet,
     Image,
     ScrollView,
-    FlatList
+    FlatList,
+    ImageBackground
 } from 'react-native';
 import Title from "../components/Title";
-<<<<<<< HEAD
-
-import EventBox from "../components/EventBox";
-=======
 import CharacterBox from "../components/CharacterBox"
->>>>>>> c25ac44250fef0277b343069ccf68453377101d9
 import CharactersService from '../services/characters.service';
 
 class Home extends Component{
@@ -34,36 +30,60 @@ class Home extends Component{
 
         let {characters} = this.state;
         let {navigation}=this.props;
+
+        const image = { uri: "http://fr.web.img6.acsta.net/r_640_360/newsv7/18/03/02/11/26/3411268.jpg" };
+        const image2 = { uri: "https://www.disneyphile.fr/wp-content/uploads/2019/12/saison-des-super-héros-marvel.png" };
+        
         
         return (
             <ScrollView style={ styles.container }>
-                <Title title={"Ce week-end"}/>
-                <FlatList
-                    data={characters}
-                    horizontal={true}
-                    showsHorizontalScrollIndicator={false}
-                    backgroundColor={"#FFF"}
-                    keyExtractor={(item)=>item.id}
-                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} />
-                    
-                <Title title={"A venir"}/>
-                <FlatList
-                    data={characters}
-                    backgroundColor={"#FFF"}
-                    keyExtractor={(item)=>item.id}
-                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} />
 
+                <ImageBackground source={image2} style={styles.image}>
+                    <Title title={"Votre futur crush"} style={styles.title}/>
+                </ImageBackground>
+                
+                    <FlatList
+                        data={characters}
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        backgroundColor={"#FFF"}
+                        keyExtractor={(item)=>item.id}
+                        renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} />
+
+                    <ImageBackground source={image} style={styles.image}>
+                        <Title title={"A venir"}/>
+                    </ImageBackground>
+
+                    <FlatList
+                        data={characters}
+                        backgroundColor={"#FFF"}
+                        keyExtractor={(item)=>item.id}
+                        renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} />
+                        
+                
             </ScrollView>
         )
     }
 }
+
+
 
 export default Home;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#FFF",
+        backgroundColor: "#fed6e9",
         paddingTop: 70
-    }
+    },
+    image: {
+        flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center"
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: '#000'
+      }
 });
