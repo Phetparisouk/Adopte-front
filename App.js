@@ -72,7 +72,7 @@ const AppNavigator = createStackNavigator(
 
       },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Splash'
     }
 );
 
