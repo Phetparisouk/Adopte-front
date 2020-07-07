@@ -6,7 +6,7 @@ import {
     StyleSheet,
     TextInput,
     Button,
-    TouchableOpacity
+    TouchableHighlight 
 } from 'react-native';
 import tcomb from 'tcomb-form-native';
 
@@ -53,11 +53,19 @@ class Login extends Component{
         let email=validate.value.email;
         let password=validate.value.password;
         let user = await UsersService.auth({email,password});
-        if(user){
-            this.props.navigation.navigate('Home');
+        if(user.user){
+            if(user.user.role == 'admin'){
+                this.props.navigation.navigate('HomeAdmin');
+            }
+            else{
+                this.props.navigation.navigate('ListChar');
+            }
         }
     }
 
+    async register(){
+        this.props.navigation.navigate('Register');
+    }
     render(){
         return (
             <View ref={this.containerRef} style={styles.container}>
@@ -67,8 +75,12 @@ class Login extends Component{
                     type={LoginModel}
                     options={options}
                     value={this.state} /> }
-                <Button title={"Se connecter"} onPress={() => this.connect()}/>
-
+                    <TouchableHighlight style={styles.button} onPress={() => this.connect()} underlayColor='#99d9f4'>
+                        <Text style={styles.buttonText}>Se connecter !</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={styles.button} onPress={() => this.register()} underlayColor='#99d9f4'>
+                        <Text style={styles.buttonText}>S'inscrire !</Text>
+                    </TouchableHighlight>
             </View>
         )
     }
@@ -88,6 +100,21 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 20,
         marginLeft: 20,
-    }
+    },
+    buttonText: {
+        fontSize: 18,
+        color: 'white',
+        alignSelf: 'center'
+      },
+      button: {
+        height: 36,
+        width:"50%",
+        backgroundColor: '#48BBEC',
+        borderColor: '#48BBEC',
+        borderWidth: 1,
+        borderRadius: 8,
+        marginBottom: 10,
+        justifyContent: 'center'
+      }
 
 });

@@ -12,7 +12,7 @@ import Title from "../components/Title";
 import CharacterBox from "../components/CharacterBox"
 import CharactersService from '../services/characters.service';
 
-class Home extends Component{
+class ListChar extends Component{
 
     constructor(props) {
         super (props);
@@ -26,9 +26,21 @@ class Home extends Component{
         this.setState({characters});
     }
 
+    randomize(tab) {
+        var i, j, tmp;
+        for (i = tab.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            tmp = tab[i];
+            tab[i] = tab[j];
+            tab[j] = tmp;
+        }
+        return tab;
+    }
+
     render() {
 
-        let {characters} = this.state;
+        let characters=this.randomize(this.state.characters);
+        console.log(characters);
         let {navigation}=this.props;
 
         const image = { uri: "http://fr.web.img6.acsta.net/r_640_360/newsv7/18/03/02/11/26/3411268.jpg" };
@@ -39,26 +51,27 @@ class Home extends Component{
             <ScrollView style={ styles.container }>
 
                 <ImageBackground source={image2} style={styles.image}>
-                    <Title title={"Votre futur crush"} style={styles.title}/>
+                    <Title title={"Vos Favoris"} style={styles.title}/>
                 </ImageBackground>
-                
-                    <FlatList
-                        data={characters}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        backgroundColor={"#FFF"}
-                        keyExtractor={(item)=>item.id}
-                        renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} />
+                <FlatList
+                    data={characters}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    backgroundColor={"#FFF"}
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} 
+                />
 
-                    <ImageBackground source={image} style={styles.image}>
-                        <Title title={"A venir"}/>
-                    </ImageBackground>
-
-                    <FlatList
-                        data={characters}
-                        backgroundColor={"#FFF"}
-                        keyExtractor={(item)=>item.id}
-                        renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} />
+                <ImageBackground source={image} style={styles.image}>
+                    <Title title={"Découvrir"}/>
+                </ImageBackground>
+                <FlatList
+                    data={characters}
+                    numColumns={2}
+                    backgroundColor={"#FFF"}
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} 
+                />
                         
                 
             </ScrollView>
@@ -68,13 +81,13 @@ class Home extends Component{
 
 
 
-export default Home;
+export default ListChar;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fed6e9",
-        paddingTop: 70
+        backgroundColor: "white",
+        paddingTop: 25
     },
     image: {
         flex: 1,
