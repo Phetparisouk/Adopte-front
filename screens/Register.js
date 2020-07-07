@@ -18,7 +18,8 @@ class Register extends Component{
           mdp:null,
           mdp2:null,
           pseudo:null, 
-          role:"user",
+          role:"user", 
+          favoris:[],
           isModalVisible:false,
           message:null
         }

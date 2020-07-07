@@ -66,13 +66,13 @@ const BottomNavigator = createBottomTabNavigator(
 
 const AppNavigator = createStackNavigator(
     {
-        Splash: {screen: Splash,          navigationOptions: {headerShown: false}},
-        Home:   {screen: BottomNavigator, navigationOptions: {headerShown: false}},
-        HomeAdmin:   {screen: HomeAdmin,  navigationOptions: {headerShown: false}},
-        Profil: {screen: Profil,          navigationOptions: {headerShown: false}},
-        Details:{screen: Details,         navigationOptions: {headerShown: false}},
-        Login:  {screen: Login,           navigationOptions: {headerShown: false}},
-        Register:  {screen: Register,           navigationOptions: {headerShown: false}},
+        Splash:     {screen: Splash,          navigationOptions: {headerShown: false}},
+        ListChar:   {screen: BottomNavigator, navigationOptions: {headerShown: false}},
+        HomeAdmin:  {screen: HomeAdmin,  navigationOptions: {headerShown: false}},
+        Profil:     {screen: Profil,          navigationOptions: {headerShown: false}},
+        Details:    {screen: Details,         navigationOptions: {headerShown: false}},
+        Login:      {screen: Login,           navigationOptions: {headerShown: false}},
+        Register:   {screen: Register,     navigationOptions: {headerShown: false}},
 
       },
     {

@@ -43,15 +43,21 @@ class Details extends Component{
         
         favoris.includes(_id) ? favoris.splice(favoris.indexOf(_id), 1) : favoris.push(_id);
         this.props.updateFavoris(favoris);
-        this.setState({ isFavoris : !!favoris.includes(_id) })
+        this.setState({ isFavoris : !! favoris.includes(_id) })
     }
 
     closeModal() {
         this.setState({isModalVisible:false});
     }
+
+    goback(){
+        this.props.navigation.navigate('ListChar');
+    }
+
     render(){
         let {rejected_catch_phrase,accepted_catch_phrase,firstname,nickname,lastname,birthday,Description,like_behavior,dislike_behavior, profilpicture}= this.state.data;
         let {isFavoris} = this.state;
+        
         return (
             <ScrollView style={styles.container}>
                 <ImageBackground style={styles.headerImage} source={{ uri: profilpicture }}></ImageBackground>  
@@ -74,6 +80,9 @@ class Details extends Component{
                     <Text style={styles.dislike_behavior}>{dislike_behavior}</Text> 
                     <Text style={styles.Description}>{Description}</Text> 
                 </View>
+                    <TouchableHighlight style={styles.buttonBack} onPress={()=>this.goback()} underlayColor='#99d9f4'>
+                        <Text style={styles.buttonText}>Retour</Text>
+                    </TouchableHighlight>
                 <Modal onBackdropPress={()=>this.closeModal()} isVisible={this.state.isModalVisible} style={styles.modal}>
                     <View style={{ flex: 1 }}>
                         <Text style={styles.title}>Message de {nickname}</Text>
@@ -138,6 +147,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         borderColor: '#48BBEC',
         marginBottom: 10,
+        justifyContent: 'center'
+      },
+      buttonBack: {
+        height: 36,
+        width:130,
+        backgroundColor: '#7766C6',
+        borderColor: '#48BBEC',
+        top: 80,
+        left: 80,
         justifyContent: 'center'
       }
   }); 
