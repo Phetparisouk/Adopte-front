@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {updateFavoris} from '../actions/favoris.actions'; 
-import one from './../assets/characters_png/bruce_banner.png';
 import {connect} from 'react-redux'; 
 import Modal from 'react-native-modal';
 
@@ -55,7 +54,7 @@ class Details extends Component{
         let {isFavoris} = this.state;
         return (
             <ScrollView style={styles.container}>
-                <ImageBackground style={styles.headerImage} source={one}></ImageBackground>  
+                <ImageBackground style={styles.headerImage} source={{ uri: profilpicture }}></ImageBackground>  
                 { isFavoris ? 
                     <TouchableHighlight style={styles.buttonDel} onPress={()=>this.openModal()} underlayColor='#99d9f4'>
                         <Text style={styles.buttonText}>Supprimer des favoris</Text>

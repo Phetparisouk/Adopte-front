@@ -26,9 +26,21 @@ class Home extends Component{
         this.setState({characters});
     }
 
+    randomize(tab) {
+        var i, j, tmp;
+        for (i = tab.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            tmp = tab[i];
+            tab[i] = tab[j];
+            tab[j] = tmp;
+        }
+        return tab;
+    }
+
     render() {
 
-        let {characters} = this.state;
+        let characters=this.randomize(this.state.characters);
+        console.log(characters);
         let {navigation}=this.props;
 
         const image = { uri: "http://fr.web.img6.acsta.net/r_640_360/newsv7/18/03/02/11/26/3411268.jpg" };

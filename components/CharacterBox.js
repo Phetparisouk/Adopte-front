@@ -6,8 +6,6 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
-const basePNG = "./../assets/characters_png/";
-import one from './../assets/characters_png/anna.png';
 class CharacterBox extends Component{
 
     constructor(props) {
@@ -29,10 +27,9 @@ class CharacterBox extends Component{
       return (
         <TouchableOpacity onPress={() => this.details()} navigation={this.props.navigation}>
           <View style={ horizontal ? styles.containerHorizontal : styles.container}>
-              <Image source={one} style={styles.headerImage} resizeMode={"cover"}/>
+              <Image source={{ uri: profilpicture }} style={styles.headerImage} resizeMode={"cover"}/>
               <Text style={styles.nickName}>{nickname}</Text>
-              <Text style={styles.firstName}>{firstname}</Text>
-              <Text style={styles.lastName}>{lastname}</Text> 
+              <Text style={styles.lastName}>{firstname} {lastname}</Text> 
           </View>
         </TouchableOpacity>
       )
@@ -81,10 +78,6 @@ const styles = StyleSheet.create({
     nickName: {
       fontSize: 22,
       color: "#7766C6",
-      fontWeight: "bold",
-    },
-    firstName: {
-      fontSize: 15,
       fontWeight: "bold",
     },
     lastName: {
