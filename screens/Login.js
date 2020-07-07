@@ -54,10 +54,18 @@ class Login extends Component{
         let password=validate.value.password;
         let user = await UsersService.auth({email,password});
         if(user.user){
-            this.props.navigation.navigate('Home');
+            if(user.user.role == 'admin'){
+                this.props.navigation.navigate('HomeAdmin');
+            }
+            else{
+                this.props.navigation.navigate('ListChar');
+            }
         }
     }
 
+    async register(){
+        this.props.navigation.navigate('Register');
+    }
     render(){
         return (
             <View ref={this.containerRef} style={styles.container}>
@@ -69,6 +77,9 @@ class Login extends Component{
                     value={this.state} /> }
                     <TouchableHighlight style={styles.button} onPress={() => this.connect()} underlayColor='#99d9f4'>
                         <Text style={styles.buttonText}>Se connecter !</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight style={styles.button} onPress={() => this.register()} underlayColor='#99d9f4'>
+                        <Text style={styles.buttonText}>S'inscrire !</Text>
                     </TouchableHighlight>
             </View>
         )

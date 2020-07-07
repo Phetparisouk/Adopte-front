@@ -12,7 +12,7 @@ import Title from "../components/Title";
 import CharacterBox from "../components/CharacterBox"
 import CharactersService from '../services/characters.service';
 
-class Home extends Component{
+class ListChar extends Component{
 
     constructor(props) {
         super (props);
@@ -81,13 +81,13 @@ class Home extends Component{
 
 
 
-export default Home;
+export default ListChar;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fed6e9",
-        paddingTop: 70
+        backgroundColor: "white",
+        paddingTop: 25
     },
     image: {
         flex: 1,
