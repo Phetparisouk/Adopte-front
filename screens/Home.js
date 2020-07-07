@@ -39,26 +39,27 @@ class Home extends Component{
             <ScrollView style={ styles.container }>
 
                 <ImageBackground source={image2} style={styles.image}>
-                    <Title title={"Votre futur crush"} style={styles.title}/>
+                    <Title title={"Vos Favoris"} style={styles.title}/>
                 </ImageBackground>
-                
-                    <FlatList
-                        data={characters}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        backgroundColor={"#FFF"}
-                        keyExtractor={(item)=>item.id}
-                        renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} />
+                <FlatList
+                    data={characters}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    backgroundColor={"#FFF"}
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} 
+                />
 
-                    <ImageBackground source={image} style={styles.image}>
-                        <Title title={"A venir"}/>
-                    </ImageBackground>
-
-                    <FlatList
-                        data={characters}
-                        backgroundColor={"#FFF"}
-                        keyExtractor={(item)=>item.id}
-                        renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} />
+                <ImageBackground source={image} style={styles.image}>
+                    <Title title={"Découvrir"}/>
+                </ImageBackground>
+                <FlatList
+                    data={characters}
+                    numColumns={2}
+                    backgroundColor={"#FFF"}
+                    keyExtractor={(item)=>item.id}
+                    renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} 
+                />
                         
                 
             </ScrollView>

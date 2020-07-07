@@ -24,10 +24,11 @@ class CharacterBox extends Component{
       
       let {firstname,nickname,lastname, profilpicture}= this.props.data;
       let {horizontal}= this.props;
+
+        
       return (
         <TouchableOpacity onPress={() => this.details()} navigation={this.props.navigation}>
           <View style={ horizontal ? styles.containerHorizontal : styles.container}>
-            
               <Image source={one} style={styles.headerImage} resizeMode={"cover"}/>
               <Text style={styles.nickName}>{nickname}</Text>
               <Text style={styles.firstName}>{firstname}</Text>
@@ -42,7 +43,9 @@ export default CharacterBox;
 
 const styles = StyleSheet.create({
   container: {
+    width: 160,
     marginBottom: 20,
+    marginTop: 10,
     marginHorizontal: 10,
 
     shadowColor: "#000",
@@ -57,6 +60,7 @@ const styles = StyleSheet.create({
   containerHorizontal: {
     width: 350,
     marginBottom: 20,
+    marginTop: 10,
     marginHorizontal: 10,
 
     shadowColor: "#000",
