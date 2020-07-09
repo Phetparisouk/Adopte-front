@@ -12,6 +12,7 @@ import Splash from "./screens/Splash";
 import ListChar from "./screens/ListChar";
 import Register from "./screens/Register";
 import HomeAdmin from "./screens/HomeAdmin";
+import Search from "./screens/Search";
 import Profil from "./screens/Profil";
 const store = createStore(rootReducer);
 
@@ -30,7 +31,7 @@ const BottomNavigator = createBottomTabNavigator(
         />
       )
     })
-  } /* , 
+  }, 
   Search:{
     screen: Search,
     navigationOptions:()=>({
@@ -42,7 +43,7 @@ const BottomNavigator = createBottomTabNavigator(
         />
       )
     })
-  }*/, 
+  }, 
   Profil:{
     screen:Profil, 
     navigationOptions:()=>({
@@ -66,13 +67,14 @@ const BottomNavigator = createBottomTabNavigator(
 
 const AppNavigator = createStackNavigator(
     {
-        Splash: {screen: Splash,          navigationOptions: {headerShown: false}},
-        Home:   {screen: BottomNavigator, navigationOptions: {headerShown: false}},
-        HomeAdmin:   {screen: HomeAdmin,  navigationOptions: {headerShown: false}},
-        Profil: {screen: Profil,          navigationOptions: {headerShown: false}},
-        Details:{screen: Details,         navigationOptions: {headerShown: false}},
-        Login:  {screen: Login,           navigationOptions: {headerShown: false}},
-        Register:  {screen: Register,           navigationOptions: {headerShown: false}},
+        Splash:     { screen: Splash,           navigationOptions: {headerShown: false}},
+        ListChar:   { screen: BottomNavigator,  navigationOptions: {headerShown: false}},
+        Search:     { screen: Search,           navigationOptions: {headerShown: false}},
+        HomeAdmin:  { screen: HomeAdmin,        navigationOptions: {headerShown: false}},
+        Profil:     { screen: Profil,           navigationOptions: {headerShown: false}},
+        Details:    { screen: Details,          navigationOptions: {headerShown: false}},
+        Login:      { screen: Login,            navigationOptions: {headerShown: false}},
+        Register:   { screen: Register,         navigationOptions: {headerShown: false}},
 
       },
     {

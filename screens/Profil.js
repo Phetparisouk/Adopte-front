@@ -6,13 +6,18 @@ import {
 } from 'react-native';
 
 class Profil extends Component{
+    constructor(props){
+        super(props); 
+        this.state = {
+        }
+      }
 
     render(){
-        return (
-            <View style={ styles.container }>
-                <Text>Profil</Text>
+        return(
+            <View style={styles.container}>
+              <Text>Profil</Text>
             </View>
-        )
+          )
     }
 }
 

@@ -40,7 +40,6 @@ class ListChar extends Component{
     render() {
 
         let characters=this.randomize(this.state.characters);
-        console.log(characters);
         let {navigation}=this.props;
 
         const image = { uri: "http://fr.web.img6.acsta.net/r_640_360/newsv7/18/03/02/11/26/3411268.jpg" };
@@ -49,21 +48,22 @@ class ListChar extends Component{
         
         return (
             <ScrollView style={ styles.container }>
-
+                {/*
                 <ImageBackground source={image2} style={styles.image}>
                     <Title title={"Vos Favoris"} style={styles.title}/>
                 </ImageBackground>
-                <FlatList
+
+                 <FlatList
                     data={characters}
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     backgroundColor={"#FFF"}
                     keyExtractor={(item)=>item.id}
                     renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} horizontal={true} />} 
-                />
+                /> */}
 
                 <ImageBackground source={image} style={styles.image}>
-                    <Title title={"Découvrir"}/>
+                    <Title title={"Liste des personnages"}/>
                 </ImageBackground>
                 <FlatList
                     data={characters}
