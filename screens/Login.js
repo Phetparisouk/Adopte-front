@@ -27,6 +27,8 @@ const options = {
         }, 
         password: {
             label: "Mot de passe",
+            password: true,
+            secureTextEntry: true,
         }
     }
 };

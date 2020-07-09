@@ -35,6 +35,7 @@ class ListChar extends Component{
             tab[j] = tmp;
         }
         return tab;
+        
     }
 
     render() {
@@ -44,8 +45,7 @@ class ListChar extends Component{
 
         const image = { uri: "http://fr.web.img6.acsta.net/r_640_360/newsv7/18/03/02/11/26/3411268.jpg" };
         const image2 = { uri: "https://www.disneyphile.fr/wp-content/uploads/2019/12/saison-des-super-héros-marvel.png" };
-        
-        
+                
         return (
             <ScrollView style={ styles.container }>
                 {/*
@@ -69,7 +69,7 @@ class ListChar extends Component{
                     data={characters}
                     numColumns={2}
                     backgroundColor={"#FFF"}
-                    keyExtractor={(item)=>item.id}
+                    keyExtractor={(item)=>item._id}
                     renderItem={({ item }) =><CharacterBox navigation={navigation} data={item} />} 
                 />
                         
@@ -78,8 +78,6 @@ class ListChar extends Component{
         )
     }
 }
-
-
 
 export default ListChar;
 
