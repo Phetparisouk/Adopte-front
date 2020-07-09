@@ -100,8 +100,7 @@ class Register extends Component{
                         <Text style={styles.message}>{this.state.message}</Text>
                     </View> 
                 </Modal>
-            </View>
-            
+            </View>            
           )
     }
 }

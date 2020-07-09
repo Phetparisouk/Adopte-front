@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
   },
     nickName: {
       fontSize: 22,
-      color: "#7766C6",
-      fontWeight: "bold",
+      color: "#fff3b2",
+      fontWeight: "900",
     },
     lastName: {
       fontSize: 15,

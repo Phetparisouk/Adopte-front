@@ -44,8 +44,6 @@ class Search extends Component{
             </View>
         );
     }
-
-
 }
 
 export default Search; 
