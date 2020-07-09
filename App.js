@@ -13,6 +13,7 @@ import Splash from "./screens/Splash";
 import ListChar from "./screens/ListChar";
 import Register from "./screens/Register";
 import HomeAdmin from "./screens/HomeAdmin";
+import NewCharacter from "./screens/NewCharacter";
 import Search from "./screens/Search";
 const store = createStore(rootReducer);
 
@@ -62,6 +63,7 @@ const AppNavigator = createStackNavigator(
         Details:    { screen: Details,          navigationOptions: {headerShown: false}},
         DetailsAdmin:    { screen: DetailsAdmin,          navigationOptions: {headerShown: false}},
         Login:      { screen: Login,            navigationOptions: {headerShown: false}},
+        NewCharacter:      { screen: NewCharacter,            navigationOptions: {headerShown: false}},
         Register:   { screen: Register,         navigationOptions: {headerShown: false}},
 
       },

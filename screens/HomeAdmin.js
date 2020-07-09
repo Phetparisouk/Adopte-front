@@ -6,7 +6,8 @@ import {
     Image,
     ScrollView,
     FlatList,
-    ImageBackground
+    ImageBackground,
+    TouchableHighlight
 } from 'react-native';
 import Title from "../components/Title";
 import CharacterBoxAdmin from "../components/CharacterBoxAdmin"
@@ -25,9 +26,10 @@ class HomeAdmin extends Component{
         let characters = await CharactersService.list();
         this.setState({characters});
     }
-
+    newCharacter(){
+        this.props.navigation.navigate('NewCharacter');
+    }
     render() {
-
         const image2 = { uri: "https://www.disneyphile.fr/wp-content/uploads/2019/12/saison-des-super-héros-marvel.png" };
         
         let {characters}=this.state;
@@ -38,7 +40,6 @@ class HomeAdmin extends Component{
                 <ImageBackground source={image2} style={styles.image}>
                     <Title title={"Liste des personnages"} style={styles.title}/>
                 </ImageBackground>
-
                 <FlatList
                     data={characters}
                     numColumns={2}
@@ -46,7 +47,7 @@ class HomeAdmin extends Component{
                     keyExtractor={(item)=>item._id}
                     renderItem={({ item }) =><CharacterBoxAdmin navigation={navigation} data={item} />} 
                 />                       
-                
+        
             </ScrollView>
         )
     }
@@ -71,5 +72,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         color: '#000'
-      }
+      },
+
+      buttonAdd: {
+        height: 36,
+        backgroundColor: 'green',
+        borderColor: '#48BBEC',
+        marginBottom: 10,
+        justifyContent: 'center'
+      },
 });
