@@ -23,6 +23,7 @@ class CharacterBoxAdmin extends Component{
       let {firstname,nickname,lastname, profilpicture}= this.props.data;
       let {horizontal}= this.props;
 
+      const image = { uri: "https://europeanpartnership-responsibleminerals.eu/file/download/53241763" };
         
       return (
         <TouchableOpacity onPress={() => this.details()} navigation={this.props.navigation}>

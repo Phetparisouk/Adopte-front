@@ -5,7 +5,8 @@ import {
     StyleSheet,
     ImageBackground,
     TouchableHighlight,
-    Button
+    Button,
+    Image
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import {updateFavoris} from '../actions/favoris.actions'; 
@@ -53,6 +54,9 @@ class Details extends Component{
     render(){
         let {rejected_catch_phrase,accepted_catch_phrase,firstname,nickname,lastname,birthday,Description,like_behavior,dislike_behavior, profilpicture}= this.state.data;
         let {isFavoris} = this.state;
+
+        const image = { uri: "https://europeanpartnership-responsibleminerals.eu/file/download/53241763" };
+        const heart = {uri : "https://webstockreview.net/images/clipart-hearts-donut-14.png"}
         
         return (
             <ScrollView style={styles.container}>
@@ -63,21 +67,20 @@ class Details extends Component{
                     </TouchableHighlight>
                 : 
                     <TouchableHighlight style={styles.buttonAdd} onPress={()=>this.openModal()} underlayColor='#99d9f4'>
-                        <Text style={styles.buttonText}>Ajouter aux favoris</Text>
+                            <Text style={styles.buttonText}>Ajouter aux favoris</Text>                                                 
                     </TouchableHighlight>
                 }
-            
+
                 <View style={styles.body}>
                     <Text style={styles.nickName}>{nickname}</Text>
-                    <Text style={styles.firstname}>{firstname}</Text>
-                    <Text style={styles.lastName}>{lastname}</Text> 
-                    <Text style={styles.birthday}>{birthday}</Text> 
-                    <Text style={styles.like_behavior}>{like_behavior}</Text> 
-                    <Text style={styles.dislike_behavior}>{dislike_behavior}</Text> 
-                    <Text style={styles.Description}>{Description}</Text> 
+                    <Text style={styles.firstname}>Prenom : {firstname}</Text>
+                    <Text style={styles.lastName}>Nom : {lastname}</Text> 
+                    <Text style={styles.birthday}>Anniversaire : {birthday}</Text> 
+                    <Text style={styles.like_behavior}>Aime : {like_behavior}</Text> 
+                    <Text style={styles.dislike_behavior}>Aime pas : {dislike_behavior}</Text>  
                 </View>
                     <TouchableHighlight onPress={()=>this.goback()} underlayColor='#99d9f4'>
-                        <Text style={styles.back} >Retour</Text>
+                        <ImageBackground source={image} style={styles.returnButton}></ImageBackground>
                     </TouchableHighlight>
                 <Modal onBackdropPress={()=>this.closeModal()} isVisible={this.state.isModalVisible} style={styles.modal}>
                     <View style={{ flex: 1 }}>
@@ -92,11 +95,19 @@ class Details extends Component{
 
 const styles = StyleSheet.create({
     container:{
-      backgroundColor:"#FFF",
+      backgroundColor:"#EDF",
       flex:1
     }, 
     headerImage:{
       height:300,
+    },
+    returnButton:{
+        height:70,
+        width:70
+    },
+    heartEmoji:{
+        height:30,
+        width:30
     },
     modal:{
         backgroundColor:'white',
@@ -109,9 +120,10 @@ const styles = StyleSheet.create({
     },
     nickName: {
         fontSize: 30,
-        color: "#7766C6",
+        color: "#0A58D9",
         fontWeight: "bold",
         textAlign:"center",
+        marginBottom:30
       },
     message: {
           fontSize: 15,

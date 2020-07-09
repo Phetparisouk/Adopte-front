@@ -77,12 +77,13 @@ const styles = StyleSheet.create({
   },
     nickName: {
       fontSize: 22,
-      color: "#fff3b2",
-      fontWeight: "900",
+      color: "#0A58D9",
+      fontWeight: "bold",
     },
     lastName: {
       fontSize: 15,
-      fontWeight: "bold",
+      color: "#444444",
+      fontWeight: "700",
     },
   });
   

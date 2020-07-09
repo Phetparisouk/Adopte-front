@@ -21,7 +21,7 @@ export default Title;
 const styles = StyleSheet.create({
     title: {
         fontSize: 28,
-        color: "#000",
+        color: "#FFFF00",
         fontWeight: 'bold',
         marginBottom: 20,
         marginLeft: 10,
