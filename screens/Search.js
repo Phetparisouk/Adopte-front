@@ -39,7 +39,7 @@ class Search extends Component{
                     data={chars}
                     backgroundColor={"#FFF"}
                     keyExtractor={item=>item.id}
-                    renderItem={({item}) => <CharacterBox data={item} navigation={navigation}/>}
+                    renderItem={({item}) => <CharacterBox data={item} navigation={navigation} horizontal={true}/>}
                 />
             </View>
         );
