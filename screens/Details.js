@@ -80,8 +80,8 @@ class Details extends Component{
                     <Text style={styles.dislike_behavior}>{dislike_behavior}</Text> 
                     <Text style={styles.Description}>{Description}</Text> 
                 </View>
-                    <TouchableHighlight style={styles.buttonBack} onPress={()=>this.goback()} underlayColor='#99d9f4'>
-                        <Text style={styles.buttonText}>Retour</Text>
+                    <TouchableHighlight onPress={()=>this.goback()} underlayColor='#99d9f4'>
+                        <Text style={styles.back} >Retour</Text>
                     </TouchableHighlight>
                 <Modal onBackdropPress={()=>this.closeModal()} isVisible={this.state.isModalVisible} style={styles.modal}>
                     <View style={{ flex: 1 }}>
@@ -149,15 +149,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'center'
       },
-      buttonBack: {
+      back: {
         height: 36,
-        width:130,
-        backgroundColor: '#7766C6',
-        borderColor: '#48BBEC',
-        top: 80,
-        left: 80,
+        color: 'black',
+        fontSize:30,
+        textAlign:"right",
+        marginRight: 10,
         justifyContent: 'center'
-      }
+      },
   }); 
 
   const mapStateToProps = state => {
