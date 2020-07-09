@@ -8,12 +8,12 @@ import {Provider} from 'react-redux';
 import { createStore } from 'redux';
 import Login from './screens/Login';
 import Details from './screens/Details';
+import DetailsAdmin from './screens/DetailsAdmin';
 import Splash from "./screens/Splash";
 import ListChar from "./screens/ListChar";
 import Register from "./screens/Register";
 import HomeAdmin from "./screens/HomeAdmin";
 import Search from "./screens/Search";
-import Profil from "./screens/Profil";
 const store = createStore(rootReducer);
 
 
@@ -43,19 +43,7 @@ const BottomNavigator = createBottomTabNavigator(
         />
       )
     })
-  }, 
-  Profil:{
-    screen:Profil, 
-    navigationOptions:()=>({
-      tabBarIcon:({tintColor})=>(
-      <Icon
-        name={"user"}
-        color={tintColor}
-        size={24}
-      />
-    )
-  })
-}
+  }
 },
   {
   tabBarOptions:{
@@ -71,8 +59,8 @@ const AppNavigator = createStackNavigator(
         ListChar:   { screen: BottomNavigator,  navigationOptions: {headerShown: false}},
         Search:     { screen: Search,           navigationOptions: {headerShown: false}},
         HomeAdmin:  { screen: HomeAdmin,        navigationOptions: {headerShown: false}},
-        Profil:     { screen: Profil,           navigationOptions: {headerShown: false}},
         Details:    { screen: Details,          navigationOptions: {headerShown: false}},
+        DetailsAdmin:    { screen: DetailsAdmin,          navigationOptions: {headerShown: false}},
         Login:      { screen: Login,            navigationOptions: {headerShown: false}},
         Register:   { screen: Register,         navigationOptions: {headerShown: false}},
 

@@ -24,6 +24,17 @@ class CharactersService {
         let response = await call.json();
         return response.chars;
     }
+
+    static async delete(id){
+        let init = {
+            method: "DELETE",
+            headers : { "Content-Type": "application/json" },
+        };
+
+        let call = await fetch(`${baseURL}characters/${id}`, init);
+        let response = await call.json();
+        return response;
+    }
 }
 
 export default CharactersService;

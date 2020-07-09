@@ -8,11 +8,10 @@ import {
     Button
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import {updateFavoris} from '../actions/favoris.actions'; 
-import {connect} from 'react-redux'; 
 import Modal from 'react-native-modal';
+import CharactersService from '../services/characters.service';
 
-class Details extends Component{
+class DetailsAdmin extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -22,50 +21,33 @@ class Details extends Component{
           }
     }
     
-    componentDidMount() {
-
-        let isFavoris = false;
-        let {favoris} = this.props;
-        let {data} = this.state;
-
-        favoris.includes(data._id) ? isFavoris = true : isFavoris = false;
-        this.setState({isFavoris});
+    async componentDidMount() {
     }
 
-    openModal() {
+    async openModal(id) {
         this.setState({isModalVisible:true});
-        let {favoris} = this.props;
-        let {_id} = this.state.data;
-        
-        favoris.includes(_id) ? favoris.splice(favoris.indexOf(_id), 1) : favoris.push(_id);
-        this.props.updateFavoris(favoris);
-        this.setState({ isFavoris : !! favoris.includes(_id) });
+        await CharactersService.delete(id);
     }
 
     closeModal() {
+        this.props.navigation.navigate('HomeAdmin');
         this.setState({isModalVisible:false});
     }
 
     goback(){
-        this.props.navigation.navigate('ListChar');
+        this.props.navigation.navigate('HomeAdmin');
     }
 
     render(){
-        let {rejected_catch_phrase,accepted_catch_phrase,firstname,nickname,lastname,birthday,Description,like_behavior,dislike_behavior, profilpicture}= this.state.data;
-        let {isFavoris} = this.state;
+        let {rejected_catch_phrase,firstname,nickname,lastname,birthday,Description,like_behavior,dislike_behavior, profilpicture,_id}= this.state.data;
         
         return (
             <ScrollView style={styles.container}>
                 <ImageBackground style={styles.headerImage} source={{ uri: profilpicture }}></ImageBackground>  
-                { isFavoris ? 
-                    <TouchableHighlight style={styles.buttonDel} onPress={()=>this.openModal()} underlayColor='#99d9f4'>
-                        <Text style={styles.buttonText}>Supprimer des favoris</Text>
+                
+                    <TouchableHighlight style={styles.buttonDel} onPress={()=>this.openModal(_id)} underlayColor='#99d9f4'>
+                        <Text style={styles.buttonText}>Supprimer</Text>
                     </TouchableHighlight>
-                : 
-                    <TouchableHighlight style={styles.buttonAdd} onPress={()=>this.openModal()} underlayColor='#99d9f4'>
-                        <Text style={styles.buttonText}>Ajouter aux favoris</Text>
-                    </TouchableHighlight>
-                }
             
                 <View style={styles.body}>
                     <Text style={styles.nickName}>{nickname}</Text>
@@ -82,7 +64,7 @@ class Details extends Component{
                 <Modal onBackdropPress={()=>this.closeModal()} isVisible={this.state.isModalVisible} style={styles.modal}>
                     <View style={{ flex: 1 }}>
                         <Text style={styles.title}>Message de {nickname}</Text>
-                        <Text style={styles.message}>{isFavoris ? accepted_catch_phrase : rejected_catch_phrase  }</Text>
+                        <Text style={styles.message}>{rejected_catch_phrase  }</Text>
                     </View> 
                 </Modal>
             </ScrollView>
@@ -155,17 +137,5 @@ const styles = StyleSheet.create({
       },
   }); 
 
-  const mapStateToProps = state => {
-    return {
-        favoris: state.favoris
-    }
-};
 
-  
-const mapDispatchToProps = dispatch => {
-    return {
-        updateFavoris: favoris => {dispatch(updateFavoris(favoris))},
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default DetailsAdmin;
